@@ -1,27 +1,29 @@
 <div align="center">
-   <img src="assets/screenshots/Screenshot.png" alt="Recipe Fridge App" width="300" />
 
-   <h1>🥑 Recipe Fridge</h1>
-   <p>
-      <b>Modern, beautiful kitchen & recipe manager for home cooks</b><br/>
-      <i>Track your fridge, discover recipes, and never waste food again.</i>
-   </p>
-   <a href="#features"><img src="https://img.shields.io/badge/Expo-React%20Native-blue" /></a>
-   <a href="#license"><img src="https://img.shields.io/badge/License-MIT-green.svg" /></a>
-</div>
+<img src="assets/screenshots/Screenshot.png" alt="Recipe Fridge App" width="300" align="center" />
+
+# 🥑 Recipe Fridge
+
+**The open-source kitchen companion for real home cooks.**
+
+Tired of forgetting what’s in your fridge? Want to discover new recipes with what you already have? Recipe Fridge is your all-in-one, privacy-friendly kitchen manager and recipe explorer. Built for foodies, meal preppers, and anyone who hates food waste.
 
 ---
 
-## ✨ Features
+---
 
-- 🧊 <b>Kitchen Inventory</b>: Manage your fridge, pantry, and freezer with ease
-- 🏷️ <b>Smart Categories</b>: Color-coded for Dairy, Meat, Protein, Vegetable, Fruit, Grain, Pantry, Seafood, Frozen, Snack, and more
-- ⏰ <b>Expiry Tracking</b>: Instantly see what’s fresh, expiring soon, or expired
-- 🍳 <b>Recipe Discovery</b>: Find recipes from TheMealDB & Spoonacular based on your real ingredients
-- 📦 <b>Barcode Scanning</b>: Add items in seconds (where supported)
-- 🛒 <b>Shopping List</b>: Build and manage your shopping list from missing ingredients
-- 🔔 <b>Notifications</b>: Get reminders before food expires
-- 🎨 <b>Modern UI</b>: Clean, responsive design with haptics and beautiful category colors
+## ✨ Why You'll Love It
+
+- 🧊 **Zero-stress Kitchen Inventory:** Know exactly what’s in your fridge, freezer, and pantry—anytime, anywhere.
+- 🏷️ **Smart, Colorful Categories:** Instantly spot Dairy, Meat, Protein, Veggies, Fruit, and more with beautiful color coding.
+- ⏰ **Expiry Radar:** See what’s fresh, what’s expiring soon, and what’s already gone (so you can save money and the planet).
+- 🍳 **Recipe Magic:** Find recipes you can actually cook, powered by TheMealDB & Spoonacular APIs.
+- 📦 **Barcode Scanning:** Add groceries in a snap (where supported).
+- 🛒 **Shopping List:** Build your next grocery run from missing ingredients—never double-buy again.
+- 🔔 **Expiry Reminders:** Get notified before food goes bad (if you want).
+- 🎨 **Modern, Delightful UI:** Responsive, haptic, and just plain nice to use.
+
+---
 
 ---
 
@@ -120,7 +122,7 @@ npx expo start
 
 ## 📄 License
 
-MIT License. See [LICENSE](LICENSE) for details.
+MIT License. See [`LICENSE`](LICENSE) for details.
 
 ---
 
