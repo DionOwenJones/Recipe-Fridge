@@ -1,131 +1,146 @@
-<div align="center">
-
-<img src="assets/screenshots/Screenshot.png" alt="Recipe Fridge App" width="300" align="center" />
-
 # 🥑 Recipe Fridge
 
-**The open-source kitchen companion for real home cooks.**
-
-Tired of forgetting what’s in your fridge? Want to discover new recipes with what you already have? Recipe Fridge is your all-in-one, privacy-friendly kitchen manager and recipe explorer. Built for foodies, meal preppers, and anyone who hates food waste.
-
----
-
----
-
-## ✨ Why You'll Love It
-
-- 🧊 **Zero-stress Kitchen Inventory:** Know exactly what’s in your fridge, freezer, and pantry—anytime, anywhere.
-- 🏷️ **Smart, Colorful Categories:** Instantly spot Dairy, Meat, Protein, Veggies, Fruit, and more with beautiful color coding.
-- ⏰ **Expiry Radar:** See what’s fresh, what’s expiring soon, and what’s already gone (so you can save money and the planet).
-- 🍳 **Recipe Magic:** Find recipes you can actually cook, powered by TheMealDB & Spoonacular APIs.
-- 📦 **Barcode Scanning:** Add groceries in a snap (where supported).
-- 🛒 **Shopping List:** Build your next grocery run from missing ingredients—never double-buy again.
-- 🔔 **Expiry Reminders:** Get notified before food goes bad (if you want).
-- 🎨 **Modern, Delightful UI:** Responsive, haptic, and just plain nice to use.
-
----
-
----
-
-## 📸 Screenshots
+<p align="center">
+  <a href="https://expo.dev/"><img alt="Expo" src="https://img.shields.io/badge/Built%20with-Expo-4630EB?logo=expo&logoColor=white&style=flat-square"></a>
+  <a href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-green.svg?style=flat-square"></a>
+  <a href="https://github.com/yourusername/recipe-fridge"><img alt="Stars" src="https://img.shields.io/github/stars/yourusername/recipe-fridge?style=flat-square"></a>
+  <a href="https://github.com/yourusername/recipe-fridge/issues"><img alt="Issues" src="https://img.shields.io/github/issues/yourusername/recipe-fridge?style=flat-square"></a>
+</p>
 
 <p align="center">
-   <img src="assets/screenshots/Screenshot.png" alt="Home Screen" width="250" />
+  <b>A beautiful, open-source kitchen & recipe manager for real home cooks.</b><br>
+  <i>Track your fridge. Discover new recipes. Waste less food. Eat better.</i>
+</p>
+
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#quickstart">Quickstart</a> •
+  <a href="#project-structure">Project Structure</a> •
+  <a href="#how-it-works">How It Works</a> •
+  <a href="#tech-stack">Tech Stack</a> •
+  <a href="#contributors">Contributors</a> •
+  <a href="#license">License</a>
 </p>
 
 ---
 
-## 🚀 Getting Started
+<p align="center">
+  <img alt="Recipe Fridge Screenshot" src="assets/screenshots/Screenshot.png" width="80%" />
+</p>
 
-### 1. Clone the repository
+---
 
-```sh
-git clone https://github.com/yourusername/recipe-fridge.git
-cd recipe-fridge
-```
+## ✨ Features
 
-### 2. Install dependencies
+| 🧊 Inventory                        | 🏷️ Categories                                              | ⏰ Expiry Radar                        | 🍳 Recipe Magic                    |
+| :---------------------------------- | :--------------------------------------------------------- | :------------------------------------- | :--------------------------------- |
+| Manage your fridge, pantry, freezer | Color-coded for Dairy, Meat, Protein, Veggies, Fruit, etc. | See what’s fresh, expiring, or expired | Find recipes you can actually cook |
+| 📦 Barcode Scanning                 | 🛒 Shopping List                                           | 🔔 Expiry Reminders                    | 🎨 Modern UI                       |
+| Add groceries in a snap             | Build your next grocery run                                | Get notified before food goes bad      | Responsive, haptic, and delightful |
 
-```sh
-npm install
-# or
-yarn
-```
+---
 
-### 3. Add your own `app.json`
+## 🚀 Quickstart
 
-This project requires an `app.json` file in the root directory for Expo configuration. Here is a template you can use:
-
-```json
-{
-  "expo": {
-    "name": "recipe-fridge",
-    "slug": "recipe-fridge",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash-icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.yourcompany.recipefridge"
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
-  }
-}
-```
-
-> **Note:** Replace `bundleIdentifier` and other fields as needed for your own project or Expo account.
-
-### 4. Start the app
-
-```sh
-npx expo start
-```
-
-- Open in Expo Go (iOS/Android) or use an emulator.
+1. **Clone the repo:**
+   ```sh
+   git clone https://github.com/yourusername/recipe-fridge.git
+   cd recipe-fridge
+   ```
+2. **Install dependencies:**
+   ```sh
+   npm install
+   # or
+   yarn
+   ```
+3. **Add your own `app.json`:**
+   ```json
+   {
+     "expo": {
+       "name": "recipe-fridge",
+       "slug": "recipe-fridge",
+       "version": "1.0.0",
+       "orientation": "portrait",
+       "icon": "./assets/icon.png",
+       "userInterfaceStyle": "light",
+       "splash": {
+         "image": "./assets/splash-icon.png",
+         "resizeMode": "contain",
+         "backgroundColor": "#ffffff"
+       },
+       "ios": {
+         "supportsTablet": true,
+         "bundleIdentifier": "com.yourcompany.recipefridge"
+       },
+       "android": {
+         "adaptiveIcon": {
+           "foregroundImage": "./assets/adaptive-icon.png",
+           "backgroundColor": "#ffffff"
+         }
+       },
+       "web": {
+         "favicon": "./assets/favicon.png"
+       }
+     }
+   }
+   ```
+   _Replace `bundleIdentifier` and other fields as needed._
+4. **Start the app:**
+   ```sh
+   npx expo start
+   ```
+   - Open in Expo Go (iOS/Android) or use an emulator.
 
 ---
 
 ## 🗂️ Project Structure
 
-- <b>src/components/</b> – UI components (IngredientCard, RecipeCard, Modals, etc.)
-- <b>src/screens/</b> – App screens (Home, Kitchen, Recipes, Shopping, Settings)
-- <b>src/context/</b> – Global state (KitchenContext)
-- <b>src/services/</b> – API integrations (TheMealDB, Spoonacular, barcode, notifications)
-- <b>src/types/</b> – TypeScript types (ingredient, recipe, shopping)
-- <b>src/theme/</b> – Colors, spacing, typography
-- <b>assets/</b> – Images, icons, screenshots
+```text
+src/components/   # UI components (IngredientCard, RecipeCard, Modals, etc.)
+src/screens/      # App screens (Home, Kitchen, Recipes, Shopping, Settings)
+src/context/      # Global state (KitchenContext)
+src/services/     # API integrations (TheMealDB, Spoonacular, barcode, notifications)
+src/types/        # TypeScript types (ingredient, recipe, shopping)
+src/theme/        # Colors, spacing, typography
+assets/           # Images, icons, screenshots
+```
 
 ---
 
-## 🙌 Why Recipe Fridge?
+## 🥄 How It Works
 
-- <b>Save money</b> by using what you have
-- <b>Reduce food waste</b> with expiry reminders
-- <b>Get inspired</b> with new recipes every day
-- <b>Open source</b> and MIT licensed
+1. **Add your ingredients** – Scan barcodes or enter manually.
+2. **Track expiry** – See what’s fresh, what’s expiring, and what’s expired.
+3. **Discover recipes** – Find meals you can make with what you have.
+4. **Build your shopping list** – Never double-buy or forget an ingredient again.
+
+---
+
+## 🛠 Tech Stack
+
+<p align="center">
+  <img alt="React Native" src="https://img.shields.io/badge/React%20Native-20232A?logo=react&logoColor=61DAFB&style=flat-square">
+  <img alt="Expo" src="https://img.shields.io/badge/Expo-4630EB?logo=expo&logoColor=white&style=flat-square">
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white&style=flat-square">
+  <img alt="TheMealDB API" src="https://img.shields.io/badge/API-TheMealDB-FF7043?style=flat-square">
+</p>
+
+---
+
+## 👥 Contributors
+
+<p align="center">
+  <a href="https://github.com/yourusername/recipe-fridge/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=yourusername/recipe-fridge" alt="Contributors"/>
+  </a>
+</p>
 
 ---
 
 ## 📄 License
 
-MIT License. See [`LICENSE`](LICENSE) for details.
+MIT License. See [LICENSE](LICENSE) for details.
 
 ---
 
-<p align="center">
-   <i>Made with ❤️ by Dion Jones</i>
-</p>
+<p align="center"><i>Made with ❤️ by Dion Jones</i></p>
