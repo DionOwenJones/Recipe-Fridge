@@ -25,7 +25,7 @@
 ---
 
 <p align="center">
-  <img alt="Recipe Fridge Screenshot" src="assets/screenshots/Screenshot.png" width="80%" />
+  <img alt="Recipe Fridge Screenshot" src="assets/screenshots/Screenshot.png" width="400" />
 </p>
 
 ---
