@@ -14,7 +14,11 @@ import { ShoppingItem } from "../types/shopping";
 import { colors, borderRadius, shadows, spacing, typography } from "../theme";
 import { haptics } from "../utils/haptics";
 
-export default function ShoppingScreen() {
+export default function ShoppingScreen({
+  onShowHelp,
+}: {
+  onShowHelp?: () => void;
+}) {
   const {
     shoppingList,
     toggleShoppingItem,
@@ -144,15 +148,30 @@ export default function ShoppingScreen() {
             {unchecked.length} item{unchecked.length !== 1 ? "s" : ""} to buy
           </Text>
         </View>
-        {checked.length > 0 && (
-          <TouchableOpacity
-            style={styles.clearBtn}
-            onPress={handleClearChecked}
-          >
-            <Ionicons name="trash-outline" size={18} color={colors.error} />
-            <Text style={styles.clearBtnText}>Clear ({checked.length})</Text>
-          </TouchableOpacity>
-        )}
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          {checked.length > 0 && (
+            <TouchableOpacity
+              style={styles.clearBtn}
+              onPress={handleClearChecked}
+            >
+              <Ionicons name="trash-outline" size={18} color={colors.error} />
+              <Text style={styles.clearBtnText}>Clear ({checked.length})</Text>
+            </TouchableOpacity>
+          )}
+          {onShowHelp && (
+            <TouchableOpacity
+              onPress={onShowHelp}
+              style={styles.helpBtn}
+              accessibilityLabel="Show help"
+            >
+              <Ionicons
+                name="help-circle-outline"
+                size={28}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
+          )}
+        </View>
       </View>
 
       {shoppingList.length === 0 ? (
@@ -216,6 +235,10 @@ const styles = StyleSheet.create({
     ...typography.caption,
     color: colors.textSecondary,
     marginTop: 2,
+  },
+  helpBtn: {
+    marginLeft: 12,
+    padding: 4,
   },
   clearBtn: {
     flexDirection: "row",

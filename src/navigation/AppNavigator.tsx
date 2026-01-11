@@ -1,23 +1,23 @@
-import * as React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import * as React from "react";
+import { View, StyleSheet } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import HomeScreen from '../screens/HomeScreen';
-import KitchenScreen from '../screens/KitchenScreen';
-import RecipesScreen from '../screens/RecipesScreen';
-import RecipeDetailScreen from '../screens/RecipeDetailScreen';
-import ShoppingScreen from '../screens/ShoppingScreen';
-import SettingsScreen from '../screens/SettingsScreen';
-import { CustomTabBar } from '../components/CustomTabBar';
-import { TabParamList, RootStackParamList } from './types';
-import { colors } from '../theme';
+import HomeScreen from "../screens/HomeScreen";
+import KitchenScreen from "../screens/KitchenScreen";
+import RecipesScreen from "../screens/RecipesScreen";
+import RecipeDetailScreen from "../screens/RecipeDetailScreen";
+import ShoppingScreen from "../screens/ShoppingScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import { CustomTabBar } from "../components/CustomTabBar";
+import { TabParamList, RootStackParamList } from "./types";
+import { colors } from "../theme";
 
 const Tab = createBottomTabNavigator<TabParamList>();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
-function TabNavigator() {
+function TabNavigator({ onShowHelp }: { onShowHelp?: () => void }) {
   return (
     <View style={styles.container}>
       <Tab.Navigator
@@ -26,17 +26,31 @@ function TabNavigator() {
           headerShown: false,
         }}
       >
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Kitchen" component={KitchenScreen} />
-        <Tab.Screen name="Recipes" component={RecipesScreen} />
-        <Tab.Screen name="Shopping" component={ShoppingScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+        <Tab.Screen name="Home">
+          {(props) => <HomeScreen {...props} onShowHelp={onShowHelp} />}
+        </Tab.Screen>
+        <Tab.Screen name="Kitchen">
+          {(props) => <KitchenScreen {...props} onShowHelp={onShowHelp} />}
+        </Tab.Screen>
+        <Tab.Screen name="Recipes">
+          {(props) => <RecipesScreen {...props} onShowHelp={onShowHelp} />}
+        </Tab.Screen>
+        <Tab.Screen name="Shopping">
+          {(props) => <ShoppingScreen {...props} onShowHelp={onShowHelp} />}
+        </Tab.Screen>
+        <Tab.Screen name="Settings">
+          {(props) => <SettingsScreen {...props} onShowHelp={onShowHelp} />}
+        </Tab.Screen>
       </Tab.Navigator>
     </View>
   );
 }
 
-export default function AppNavigator() {
+export default function AppNavigator({
+  onShowHelp,
+}: {
+  onShowHelp?: () => void;
+}) {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -45,13 +59,15 @@ export default function AppNavigator() {
           contentStyle: { backgroundColor: colors.background },
         }}
       >
-        <Stack.Screen name="Main" component={TabNavigator} />
+        <Stack.Screen name="Main">
+          {() => <TabNavigator onShowHelp={onShowHelp} />}
+        </Stack.Screen>
         <Stack.Screen
           name="RecipeDetail"
           component={RecipeDetailScreen}
           options={{
-            presentation: 'card',
-            animation: 'slide_from_right',
+            presentation: "card",
+            animation: "slide_from_right",
           }}
         />
       </Stack.Navigator>

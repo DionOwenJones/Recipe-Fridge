@@ -17,7 +17,11 @@ import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../navigation/types";
 import { StackNavigationProp } from "@react-navigation/stack";
 
-export default function RecipesScreen() {
+export default function RecipesScreen({
+  onShowHelp,
+}: {
+  onShowHelp?: () => void;
+}) {
   const navigation = useNavigation<StackNavigationProp<RootStackParamList>>();
   const { ingredients } = useKitchen();
 
@@ -83,6 +87,19 @@ export default function RecipesScreen() {
             >
               <Ionicons name="refresh" size={18} color={colors.textInverse} />
               <Text style={styles.generateBtnText}>Refresh</Text>
+            </TouchableOpacity>
+          )}
+          {onShowHelp && (
+            <TouchableOpacity
+              onPress={onShowHelp}
+              style={styles.helpBtn}
+              accessibilityLabel="Show help"
+            >
+              <Ionicons
+                name="help-circle-outline"
+                size={28}
+                color={colors.primary}
+              />
             </TouchableOpacity>
           )}
         </View>
@@ -314,5 +331,9 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginBottom: spacing.md,
     lineHeight: 20,
+  },
+  helpBtn: {
+    marginLeft: 12,
+    padding: 4,
   },
 });

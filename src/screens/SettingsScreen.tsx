@@ -15,7 +15,11 @@ import { useKitchen } from "../context/KitchenContext";
 import { clearAllData } from "../storage";
 import { colors, borderRadius, shadows, spacing, typography } from "../theme";
 
-export default function SettingsScreen() {
+export default function SettingsScreen({
+  onShowHelp,
+}: {
+  onShowHelp?: () => void;
+}) {
   const { settings, updateSettings, ingredients, shoppingList, cookedRecipes } =
     useKitchen();
 
@@ -58,6 +62,19 @@ export default function SettingsScreen() {
         {/* Header */}
         <View style={styles.header}>
           <Text style={styles.title}>Settings</Text>
+          {onShowHelp && (
+            <TouchableOpacity
+              onPress={onShowHelp}
+              style={styles.helpBtn}
+              accessibilityLabel="Show help"
+            >
+              <Ionicons
+                name="help-circle-outline"
+                size={28}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
+          )}
         </View>
 
         {/* API Key Section */}
@@ -203,6 +220,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.md,
     paddingBottom: spacing.lg,
+  },
+  helpBtn: {
+    marginLeft: 12,
+    padding: 4,
   },
   title: {
     ...typography.h1,

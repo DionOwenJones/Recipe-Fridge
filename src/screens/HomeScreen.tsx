@@ -17,7 +17,11 @@ import { colors, borderRadius, shadows, spacing, typography } from "../theme";
 
 type NavigationProp = NativeStackNavigationProp<RootStackParamList>;
 
-export default function HomeScreen() {
+export default function HomeScreen({
+  onShowHelp,
+}: {
+  onShowHelp?: () => void;
+}) {
   const navigation = useNavigation<NavigationProp>();
   const { ingredients, shoppingList, cookedRecipes } = useKitchen();
 
@@ -43,6 +47,19 @@ export default function HomeScreen() {
               What would you like to cook today?
             </Text>
           </View>
+          {onShowHelp && (
+            <TouchableOpacity
+              onPress={onShowHelp}
+              style={styles.helpBtn}
+              accessibilityLabel="Show help"
+            >
+              <Ionicons
+                name="help-circle-outline"
+                size={28}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
+          )}
         </View>
 
         {/* Quick Stats */}

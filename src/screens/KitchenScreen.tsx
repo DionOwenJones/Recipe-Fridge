@@ -14,7 +14,11 @@ import { IngredientCard } from "../components/IngredientCard";
 import { AddIngredientModal } from "../components/AddIngredientModal";
 import { colors, spacing, borderRadius, shadows } from "../theme";
 
-export default function KitchenScreen() {
+export default function KitchenScreen({
+  onShowHelp,
+}: {
+  onShowHelp?: () => void;
+}) {
   const { ingredients, addIngredient, removeIngredient } = useKitchen();
   const [addModalVisible, setAddModalVisible] = useState(false);
   const [selectedIngredient, setSelectedIngredient] =
@@ -43,6 +47,19 @@ export default function KitchenScreen() {
               Track what you have and what’s expiring soon
             </Text>
           </View>
+          {onShowHelp && (
+            <TouchableOpacity
+              onPress={onShowHelp}
+              style={styles.helpBtn}
+              accessibilityLabel="Show help"
+            >
+              <Ionicons
+                name="help-circle-outline"
+                size={28}
+                color={colors.primary}
+              />
+            </TouchableOpacity>
+          )}
         </View>
 
         {/* Pills summary */}
@@ -142,6 +159,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.xl,
     paddingTop: spacing.lg,
     paddingBottom: spacing.lg,
+  },
+  helpBtn: {
+    marginLeft: 12,
+    padding: 4,
   },
   greeting: {
     fontSize: 28,
