@@ -1,7 +1,7 @@
 // TheMealDB - Free recipe API (no API key required)
 // https://www.themealdb.com/api.php
 
-const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
+const BASE_URL = "https://www.themealdb.com/api/json/v1/1";
 
 export interface MealDBRecipe {
   idMeal: string;
@@ -41,7 +41,7 @@ function parseRecipe(meal: MealDBRecipe): ParsedRecipe {
     if (ingredient && ingredient.trim()) {
       ingredients.push({
         name: ingredient.trim(),
-        measure: measure?.trim() || '',
+        measure: measure?.trim() || "",
       });
     }
   }
@@ -56,11 +56,13 @@ function parseRecipe(meal: MealDBRecipe): ParsedRecipe {
     ingredients,
     youtubeUrl: meal.strYoutube || null,
     sourceUrl: meal.strSource || null,
-    tags: meal.strTags ? meal.strTags.split(',').map((t) => t.trim()) : [],
+    tags: meal.strTags ? meal.strTags.split(",").map((t) => t.trim()) : [],
   };
 }
 
-export async function searchByIngredient(ingredient: string): Promise<ParsedRecipe[]> {
+export async function searchByIngredient(
+  ingredient: string
+): Promise<ParsedRecipe[]> {
   try {
     const response = await fetch(
       `${BASE_URL}/filter.php?i=${encodeURIComponent(ingredient)}`
@@ -79,7 +81,7 @@ export async function searchByIngredient(ingredient: string): Promise<ParsedReci
 
     return recipes.filter((r): r is ParsedRecipe => r !== null);
   } catch (error) {
-    console.error('Error searching by ingredient:', error);
+    console.error("Error searching by ingredient:", error);
     return [];
   }
 }
@@ -95,7 +97,7 @@ export async function searchByName(name: string): Promise<ParsedRecipe[]> {
 
     return data.meals.map(parseRecipe);
   } catch (error) {
-    console.error('Error searching by name:', error);
+    console.error("Error searching by name:", error);
     return [];
   }
 }
@@ -109,7 +111,7 @@ export async function getRecipeById(id: string): Promise<ParsedRecipe | null> {
 
     return parseRecipe(data.meals[0]);
   } catch (error) {
-    console.error('Error fetching recipe:', error);
+    console.error("Error fetching recipe:", error);
     return null;
   }
 }
@@ -123,7 +125,7 @@ export async function getRandomRecipe(): Promise<ParsedRecipe | null> {
 
     return parseRecipe(data.meals[0]);
   } catch (error) {
-    console.error('Error fetching random recipe:', error);
+    console.error("Error fetching random recipe:", error);
     return null;
   }
 }
@@ -137,7 +139,7 @@ export async function getCategories(): Promise<string[]> {
 
     return data.categories.map((c: { strCategory: string }) => c.strCategory);
   } catch (error) {
-    console.error('Error fetching categories:', error);
+    console.error("Error fetching categories:", error);
     return [];
   }
 }
@@ -161,7 +163,7 @@ export async function getByCategory(category: string): Promise<ParsedRecipe[]> {
 
     return recipes.filter((r): r is ParsedRecipe => r !== null);
   } catch (error) {
-    console.error('Error fetching by category:', error);
+    console.error("Error fetching by category:", error);
     return [];
   }
 }
@@ -177,7 +179,14 @@ export interface IngredientWithExpiry {
 export async function findRecipesByIngredients(
   ingredientNames: string[],
   ingredientsWithExpiry?: IngredientWithExpiry[]
-): Promise<{ recipe: ParsedRecipe; matchedIngredients: string[]; missingIngredients: string[]; expiringMatchCount: number }[]> {
+): Promise<
+  {
+    recipe: ParsedRecipe;
+    matchedIngredients: string[];
+    missingIngredients: string[];
+    expiringMatchCount: number;
+  }[]
+> {
   if (ingredientNames.length === 0) return [];
 
   // Build a map of ingredient names to their expiry priority
@@ -187,7 +196,9 @@ export async function findRecipesByIngredients(
     const now = new Date().getTime();
     ingredientsWithExpiry.forEach((ing) => {
       if (ing.expiresAt) {
-        const daysUntilExpiry = Math.ceil((new Date(ing.expiresAt).getTime() - now) / (1000 * 60 * 60 * 24));
+        const daysUntilExpiry = Math.ceil(
+          (new Date(ing.expiresAt).getTime() - now) / (1000 * 60 * 60 * 24)
+        );
         // Only prioritize if expiring within 7 days
         if (daysUntilExpiry <= 7 && daysUntilExpiry >= 0) {
           expiryPriorityMap.set(ing.name.toLowerCase(), 7 - daysUntilExpiry); // Higher score = more urgent
@@ -197,11 +208,18 @@ export async function findRecipesByIngredients(
   }
 
   // Prioritize expiring ingredients in search
-  const expiringIngredients = ingredientNames.filter((n) => expiryPriorityMap.has(n.toLowerCase()));
-  const nonExpiringIngredients = ingredientNames.filter((n) => !expiryPriorityMap.has(n.toLowerCase()));
+  const expiringIngredients = ingredientNames.filter((n) =>
+    expiryPriorityMap.has(n.toLowerCase())
+  );
+  const nonExpiringIngredients = ingredientNames.filter(
+    (n) => !expiryPriorityMap.has(n.toLowerCase())
+  );
 
-  // Search with expiring ingredients first, then others
-  const searchIngredients = [...expiringIngredients.slice(0, 2), ...nonExpiringIngredients.slice(0, 2)].slice(0, 3);
+  // Search with up to 10 ingredients (expiring first, then others)
+  const searchIngredients = [
+    ...expiringIngredients,
+    ...nonExpiringIngredients,
+  ].slice(0, 10);
 
   const allRecipes: ParsedRecipe[] = [];
   const seenIds = new Set<string>();
@@ -217,15 +235,15 @@ export async function findRecipesByIngredients(
     }
   }
 
-  // Also get some random recipes if we don't have enough
-  if (allRecipes.length < 5) {
-    for (let i = 0; i < 3; i++) {
-      const random = await getRandomRecipe();
-      if (random && !seenIds.has(random.id)) {
-        seenIds.add(random.id);
-        allRecipes.push(random);
-      }
+  // Always get enough random recipes to ensure at least 15 results
+  while (allRecipes.length < 15) {
+    const random = await getRandomRecipe();
+    if (random && !seenIds.has(random.id)) {
+      seenIds.add(random.id);
+      allRecipes.push(random);
     }
+    // Prevent infinite loop if getRandomRecipe fails
+    if (allRecipes.length > 30) break;
   }
 
   // Calculate ingredient matches
@@ -239,8 +257,7 @@ export async function findRecipesByIngredients(
     for (const ing of recipe.ingredients) {
       const ingLower = ing.name.toLowerCase();
       const matchedUserIngredient = lowerIngredients.find(
-        (userIng) =>
-          ingLower.includes(userIng) || userIng.includes(ingLower)
+        (userIng) => ingLower.includes(userIng) || userIng.includes(ingLower)
       );
 
       if (matchedUserIngredient) {

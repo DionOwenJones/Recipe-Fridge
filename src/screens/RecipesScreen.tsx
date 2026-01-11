@@ -76,6 +76,7 @@ export default function RecipesScreen({
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
       >
         <View style={styles.header}>
           <Text style={styles.title}>Recipes</Text>
@@ -111,6 +112,7 @@ export default function RecipesScreen({
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.pillsContainer}
             style={{ marginBottom: spacing.md }}
+            keyboardShouldPersistTaps="handled"
           >
             {ingredients.map((ingredient) => {
               const color =

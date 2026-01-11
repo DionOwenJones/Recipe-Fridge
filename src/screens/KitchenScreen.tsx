@@ -38,6 +38,7 @@ export default function KitchenScreen({
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
       >
         {/* Header */}
         <View style={styles.header}>
@@ -68,6 +69,7 @@ export default function KitchenScreen({
             horizontal
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={styles.pillsContainer}
+            keyboardShouldPersistTaps="handled"
           >
             {categorySummary.map(([cat, count]) => {
               const color = colors.categories[cat] || colors.categories.Unknown;
