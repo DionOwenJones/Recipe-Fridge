@@ -35,10 +35,61 @@
 
 ## 🚀 Getting Started
 
+### 1. Clone the repository
+
 ```sh
 git clone https://github.com/yourusername/recipe-fridge.git
 cd recipe-fridge
-npm install # or yarn
+```
+
+### 2. Install dependencies
+
+```sh
+npm install
+# or
+yarn
+```
+
+### 3. Add your own `app.json`
+
+This project requires an `app.json` file in the root directory for Expo configuration. Here is a template you can use:
+
+```json
+{
+  "expo": {
+    "name": "recipe-fridge",
+    "slug": "recipe-fridge",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.yourcompany.recipefridge"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
+```
+
+> **Note:** Replace `bundleIdentifier` and other fields as needed for your own project or Expo account.
+
+### 4. Start the app
+
+```sh
 npx expo start
 ```
 
