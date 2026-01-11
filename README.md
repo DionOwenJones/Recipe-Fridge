@@ -25,7 +25,7 @@
 ---
 
 <p align="center">
-  <img alt="Random Panda" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" width="60%" />
+  <img alt="Recipe Fridge Screenshot" src="assets/screenshots/Screenshot.png" width="80%" />
 </p>
 
 ---
@@ -136,6 +136,12 @@ assets/           # Images, icons, screenshots
     <b>DionOwenJones</b>
   </a>
 </p>
+
+<p align="center">
+  <img alt="Random Panda" src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" width="120" />
+</p>
+
+> Place your profile picture in `assets/pfp/` and update the README if you want to show your own avatar here.
 
 ---
 
