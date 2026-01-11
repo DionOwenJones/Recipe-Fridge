@@ -130,8 +130,10 @@ assets/           # Images, icons, screenshots
 ## 👥 Contributors
 
 <p align="center">
-  <a href="https://github.com/yourusername/recipe-fridge/graphs/contributors">
-    <img src="https://contrib.rocks/image?repo=yourusername/recipe-fridge" alt="Contributors"/>
+  <a href="https://github.com/DionOwenJones">
+    <img src="https://avatars.githubusercontent.com/u/22296420?v=4" width="80" height="80" style="border-radius:50%" alt="DionOwenJones"/>
+    <br/>
+    <b>DionOwenJones</b>
   </a>
 </p>
 
